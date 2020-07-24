@@ -1,12 +1,22 @@
-.container{
-    height: 100%;
-    background: #00F260;  /* fallback for old browsers */
-    background: linear-gradient(to right, #00F260,#0575E6,); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-background: -webkit-linear-gradient(to right,#00F260 #0575E6 );  /* Chrome 10-25, Safari 5.1-6 */
+.container {
+  /* fallback for old browsers */
+  height: 100%;
+  background: #00f260;
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, #00f260, #0575e6);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, #00f260 #0575e6);
 
-.header{
-    padding: 25px;
+  .header {
+    padding: 1.5625em;
     display: flex;
     justify-content: space-between;
-}
+
+    &__logo {
+      font-weight: 900;
+      color: snow;
+      font-size: 1.5em;
+      letter-spacing: 1px;
+    }
+  }
 }
