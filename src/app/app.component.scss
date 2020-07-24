@@ -1,5 +1,6 @@
 @import "../styles/variables";
 @import "../styles/elements";
+@import "../styles/queries";
 
 .container {
   /* fallback for old browsers */
@@ -11,9 +12,13 @@
   background: -webkit-linear-gradient(to right, #00f260 #0575e6);
 
   .header {
-    padding: 1.5625em;
+    padding: 1.25em 1em;
     display: flex;
     justify-content: space-between;
+
+    @include desktop {
+      padding: 2em 3em;
+    }
 
     &__logo {
       font-weight: 900;
@@ -22,19 +27,33 @@
       letter-spacing: 1px;
     }
 
-    &__search {
+    .search-card {
       height: 2.1875em;
       max-width: 350px;
       background: $color-white;
       border-radius: 0.3125em;
       padding: 0px;
 
-      .header__input {
-        bottom: 10px;
-        left: 15px;
-        width: 90%;
+      @include desktop {
+        width: 18.75em;
+      }
+
+      &__input {
+        bottom: 0.625em;
+        left: 1em;
+        width: 80%;
         ::ng-deep .mat-form-field-underline {
           display: none;
+        }
+      }
+
+      &__logo {
+        height: 1em;
+        position: relative;
+        right: -0.8em;
+
+        @include desktop {
+          right: -1.25em;
         }
       }
     }
