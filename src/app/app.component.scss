@@ -22,7 +22,7 @@
 
     &__logo {
       font-weight: 900;
-      color: snow;
+      color: $color-white;
       font-size: 1.5em;
       letter-spacing: 1px;
     }
@@ -56,6 +56,43 @@
           right: -1.25em;
         }
       }
+    }
+  }
+
+  .weather-section {
+    padding: 1em;
+    color: $color-white;
+
+    &__title {
+      font-weight: 100;
+      font-size: 3em;
+    }
+
+    &__description {
+      font-size: 1.5em;
+      font-weight: 100;
+    }
+
+    @include desktop {
+      padding: 3em;
+
+      &__info {
+        margin: 5em;
+      }
+
+      &__title {
+        font-size: 4em;
+      }
+
+      &__description {
+        font-size: 1.3em;
+        width: 60%;
+        font-weight: 300;
+      }
+    }
+
+    &__logo {
+      height: 1em;
     }
   }
 }
