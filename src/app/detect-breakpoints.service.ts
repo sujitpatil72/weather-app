@@ -13,7 +13,7 @@ import { map } from 'rxjs/operators';
 export class DetectBreakpointsService {
   constructor(private breakpointObserver: BreakpointObserver) {}
 
-  isHandset(): Observable<boolean> {
+  getDeviceType(): Observable<boolean> {
     return this.breakpointObserver
       .observe(Breakpoints.Handset)
       .pipe(map((result: BreakpointState) => result.matches));
