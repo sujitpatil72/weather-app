@@ -6,8 +6,8 @@
 
     <mat-card class="search-card header__search-card">
       <mat-form-field class="search-card__input">
-        <input matInput />
-        <span matSuffix>
+        <input matInput [formControl]="searchInput" />
+        <span matSuffix (click)="fetchWeatherDetailsByCity()">
           <img
             class="search-card__logo"
             src="./assets/images/search.png"
