@@ -1,17 +1,26 @@
-<div class="title">
-  <h2 class="title__location" mat-dialog-title>Weather in Bangalore, IN</h2>
-  <h2 class="title__temperature" mat-dialog-title>26.1</h2>
-</div>
-<h3 class="weather-type">Thunderstorm</h3>
-<div class="content" mat-dialog-content>
-  <ul class="content__parameters">
-    <li>wind 121212</li>
-    <li>wind 121212</li>
-    <li>wind 121212</li>
-    <li>wind 121212</li>
-  </ul>
-</div>
-<div class="actions" mat-dialog-actions>
-  <button mat-flat-button color="primary">Add</button>
-  <!-- <button mat-button>Ok</button> -->
+<div class="dialog">
+  <img
+    mat-dialog-close
+    class="dialog--close"
+    src="./assets/images/close.png"
+    alt="finger image"
+  />
+  <div class="title dialog__title">
+    <h2 class="title__location" mat-dialog-title>
+      Weather in {{weatherDetails.name}}, {{weatherDetails.country}}
+    </h2>
+    <h2 class="title__temperature" mat-dialog-title>26.1</h2>
+  </div>
+  <h3 class="dialog__weather-type">Thunderstorm</h3>
+  <div class="content dialog__content" mat-dialog-content>
+    <ul class="content__parameters">
+      <li>wind 121212</li>
+      <li>wind 121212</li>
+      <li>wind 121212</li>
+      <li>wind 121212</li>
+    </ul>
+  </div>
+  <div class="dialog__actions" mat-dialog-actions>
+    <button mat-flat-button color="primary">Add</button>
+  </div>
 </div>

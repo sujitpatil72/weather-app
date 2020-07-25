@@ -1,41 +1,56 @@
-.title {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+::ng-deep .mat-dialog-container {
+  padding: 0 !important;
+}
 
-  &__temperature {
-    margin: 0;
+.dialog {
+  padding: 24px;
+  &--close {
+    height: 0.8em;
+    position: relative;
+    left: 1px;
+    top: -5px;
+    float: right;
   }
-}
 
-.weather-type {
-  text-align: center;
-  font-weight: 300;
-}
+  .title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-.content {
-  &__parameters {
-    list-style: none;
-    list-style-position: inside;
-    font-size: 1.25em;
-
-    li {
-      margin: 5px;
-    }
-
-    li::before {
-      content: "•";
-      font-size: 1.5em;
-      line-height: 0;
-      margin: 0 0.5rem 0 -0.25rem;
-      position: relative;
-      top: 0.3rem;
-      color: red;
+    &__temperature {
+      margin: 0;
     }
   }
-}
 
-.actions {
-  display: flex;
-  justify-content: center;
+  &__weather-type {
+    text-align: center;
+    font-weight: 300;
+  }
+
+  .content {
+    &__parameters {
+      list-style: none;
+      list-style-position: inside;
+      font-size: 1.25em;
+
+      li {
+        margin: 5px;
+      }
+
+      li::before {
+        content: "•";
+        font-size: 1.5em;
+        line-height: 0;
+        margin: 0 0.5rem 0 -0.25rem;
+        position: relative;
+        top: 0.3rem;
+        color: red;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;
+  }
 }
