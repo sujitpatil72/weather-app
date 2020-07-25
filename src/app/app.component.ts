@@ -14,7 +14,7 @@ const API_URL = 'https://api.openweathermap.org/data/2.5/weather';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  searchInput: FormControl = new FormControl('', Validators.required);
+  searchInput: FormControl = new FormControl('bengaluru', Validators.required);
 
   matDialogConfig: MatDialogConfig = {
     width: '90%',
@@ -44,9 +44,25 @@ export class AppComponent {
     if (this.searchInput.invalid) return;
     const url = `${API_URL}?q=${this.searchInput.value}&appid=${environment.openWeatherApiKey}`;
     this.http.get(url).subscribe(
-      (weather: IWeather) => {
+      (weather_details: IWeather) => {
+        const {
+          sys: { country, sunrise, sunset },
+          main: { temp, humidity, pressure },
+          wind,
+          name,
+          weather,
+        } = weather_details;
+
         this.openWeatherDetailsDialog({
-          cityName: weather.name,
+          name,
+          country,
+          sunrise,
+          sunset,
+          wind,
+          temp,
+          humidity,
+          pressure,
+          weather,
         });
       },
       (error) => {
@@ -59,6 +75,7 @@ export class AppComponent {
   }
 
   openWeatherDetailsDialog(weather_data) {
+    this.matDialogConfig.data = weather_data;
     const dialogRef = this.dialog.open(
       WeatherDetailsDialog,
       this.matDialogConfig
