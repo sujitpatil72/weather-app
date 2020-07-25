@@ -19,4 +19,20 @@ export interface IWeather {
     deg: number;
     speed: number;
   };
+  weather: [];
+}
+export interface IWeatherDetails {
+  name: string;
+  country: string;
+  sunrise: number;
+  sunset: number;
+  humidity: number;
+  pressure: number;
+  temp: number;
+
+  wind: {
+    deg: number;
+    speed: number;
+  };
+  weather: [];
 }
