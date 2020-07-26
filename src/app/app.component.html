@@ -18,21 +18,36 @@
     </mat-card>
   </header>
   <section class="weather-section">
-    <div class="weather-section__info">
-      <h1 class="weather-section__title">
+    <div class="info weather-section__info" *ngIf="!weatherList.size">
+      <h1 class="info__title">
         Type the city name
         <img
-          class="weather-section__logo"
+          class="info__logo"
           src="./assets/images/finger.png"
           alt="finger image"
         />
         to search
       </h1>
-      <h4 class="weather-section__description">
+      <h4 class="info__description">
         Weather is the state of the atmosphere, describing for example the
         degree to which it is hot or cold, wet or dry, calm or stormy, clear or
         cloudy
       </h4>
+    </div>
+    <div class="weather-section__list">
+      <ng-container *ngFor="let city of weatherList | keyvalue">
+        <mat-card class="list-card weather-section__list-card">
+          <div class="title list-card__title">
+            <h2 class="title__location" mat-dialog-title>
+              <!-- Weather in {{weatherDetails.name}}, {{weatherDetails.country}} -->
+              Weather in Bengaluru, IN
+            </h2>
+            <h2 class="title__temperature" mat-dialog-title>26.1</h2>
+          </div>
+          <h3 class="list-card__weather-type">Thunderstorm</h3>
+          <p class="list-card__date">abcdcdc</p>
+        </mat-card>
+      </ng-container>
     </div>
   </section>
 </div>

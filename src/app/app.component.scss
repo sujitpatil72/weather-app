@@ -4,7 +4,7 @@
 
 .container {
   /* fallback for old browsers */
-  height: 100%;
+  min-height: 100%;
   background: #00f260;
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   background: linear-gradient(to right, #00f260, #0575e6);
@@ -63,36 +63,68 @@
     padding: 1em;
     color: $color-white;
 
-    &__title {
-      font-weight: 100;
-      font-size: 3em;
-    }
-
-    &__description {
-      font-size: 1.5em;
-      font-weight: 100;
-    }
-
-    @include desktop {
-      padding: 3em;
-
-      &__info {
-        margin: 5em;
-      }
-
+    .info {
       &__title {
-        font-size: 4em;
+        font-weight: 100;
+        font-size: 3em;
       }
 
       &__description {
-        font-size: 1.3em;
-        width: 60%;
-        font-weight: 300;
+        font-size: 1.5em;
+        font-weight: 100;
+      }
+
+      @include desktop {
+        padding: 3em;
+
+        &__info {
+          margin: 5em;
+        }
+
+        &__title {
+          font-size: 4em;
+        }
+
+        &__description {
+          font-size: 1.3em;
+          width: 60%;
+          font-weight: 300;
+        }
+      }
+
+      &__logo {
+        height: 1em;
       }
     }
 
-    &__logo {
-      height: 1em;
+    &__list {
+      .list-card {
+        margin-bottom: 20px;
+        .title {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          &__location {
+            font-size: 26px;
+            margin: 20px 0;
+          }
+
+          &__temperature {
+            font-size: 25px;
+            margin: 0 0 20px;
+          }
+        }
+
+        &__weather-type {
+          text-align: center;
+          margin: 0;
+          font-weight: 300;
+        }
+
+        &__date {
+          text-align: right;
+        }
+      }
     }
   }
 }
