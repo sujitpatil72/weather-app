@@ -122,8 +122,20 @@
           }
 
           &__temperature {
+            display: flex;
+            width: 35%;
+            justify-content: space-evenly;
             font-size: 25px;
-            margin: 0 0 20px;
+
+            img {
+              height: 2.5em;
+              margin-top: -15px;
+            }
+
+            h2 {
+              margin: 0 0 20px;
+              font-size: 25px;
+            }
           }
         }
 
@@ -131,6 +143,7 @@
           text-align: center;
           margin: 0;
           font-weight: 300;
+          font-size: 1.4em;
         }
 
         &__date {
