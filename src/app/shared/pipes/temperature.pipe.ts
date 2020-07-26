@@ -4,8 +4,9 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'temperature',
 })
 export class TemperaturePipe implements PipeTransform {
-  transform(value: string): unknown {
-    const temperatureInDegrees = parseInt(value) - 273;
+  transform(value: string | number): unknown {
+    const valueInInteger = typeof value === 'string' ? parseInt(value) : value;
+    const temperatureInDegrees = Math.round((valueInInteger - 273) * 10) / 10;
     return temperatureInDegrees;
   }
 }
