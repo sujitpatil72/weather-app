@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { IWeatherDetails } from '../../weather.interface';
+import { IWeatherDetails } from '../../../core/weather.interface';
 @Component({
   selector: 'weather-details-dialog',
   templateUrl: './weather-details-dialog.html',

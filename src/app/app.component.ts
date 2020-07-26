@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { WeatherDetailsDialog } from './dialogs/weather-details-dialog/weather-details-dialog';
-import { DetectBreakpointsService } from './detect-breakpoints.service';
 import { FormControl, Validators } from '@angular/forms';
 import { environment } from '../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { IWeather, IWeatherDetails } from './weather.interface';
+import { IWeather, IWeatherDetails } from './core/weather.interface';
+import { WeatherDetailsDialog } from './shared/dialogs/weather-details-dialog/weather-details-dialog';
+import { DetectBreakpointsService } from './core/detect-breakpoints.service';
 
 const API_URL = 'https://api.openweathermap.org/data/2.5/weather';
 @Component({
@@ -22,11 +22,12 @@ export class AppComponent {
     minWidth: 350,
   };
 
-  weatherList = new Map<string, IWeatherDetails>();
+  citiesWeather = new Map<string, IWeatherDetails>();
 
-  weatherListAction = {
+  citiesWeatherAction = {
     add: (weather_details: IWeatherDetails) => {
-      this.weatherList.set(weather_details.name, weather_details);
+      this.citiesWeather.set(weather_details.name, weather_details);
+      console.log('AppComponent -> this.weatherList', this.citiesWeather);
     },
   };
 
@@ -95,7 +96,7 @@ export class AppComponent {
       console.log(`Dialog result: ${result}`);
       if (!result) return;
 
-      this.weatherListAction.add(result);
+      this.citiesWeatherAction.add(result);
     });
   }
 }
