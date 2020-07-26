@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  ChangeDetectorRef,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { FormControl, Validators } from '@angular/forms';
 import { environment } from '../environments/environment';
@@ -13,6 +17,7 @@ const API_URL = 'https://api.openweathermap.org/data/2.5/weather';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
   searchInput: FormControl = new FormControl('bengaluru', Validators.required);
@@ -39,7 +44,8 @@ export class AppComponent {
   constructor(
     private http: HttpClient,
     private dialog: MatDialog,
-    private detectBreakpointsService: DetectBreakpointsService
+    private detectBreakpointsService: DetectBreakpointsService,
+    private ref: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
@@ -120,6 +126,7 @@ export class AppComponent {
             this.citiesWeatherAction.add(result.weather_details);
           if (result.dialogType === 'remove')
             this.citiesWeatherAction.remove(result.weather_details.name);
+          this.ref.detectChanges();
         }
       );
   }
@@ -130,5 +137,9 @@ export class AppComponent {
       WeatherErrorDialog,
       this.matDialogConfig
     );
+  }
+
+  identify(index, item) {
+    return item.key;
   }
 }
