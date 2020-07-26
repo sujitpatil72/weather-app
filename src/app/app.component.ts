@@ -23,6 +23,8 @@ export class AppComponent {
     minWidth: 350,
   };
 
+  isHandset: boolean;
+
   citiesWeather = new Map<string, IWeatherDetails>();
 
   citiesWeatherAction = {
@@ -48,6 +50,7 @@ export class AppComponent {
     this.detectBreakpointsService
       .getDeviceType()
       .subscribe((isHandset: boolean) => {
+        this.isHandset = isHandset;
         this.matDialogConfig.width = isHandset ? '90%' : '30%';
       });
   }
