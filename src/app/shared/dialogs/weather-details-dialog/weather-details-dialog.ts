@@ -12,10 +12,11 @@ export class WeatherDetailsDialog {
 
   constructor(
     @Inject(MAT_DIALOG_DATA)
-    public data: { dialogType: string; weather_details: IWeatherDetails },
+    public data: { dialogType: IDialog; weather_details: IWeatherDetails },
     public dialogRef: MatDialogRef<WeatherDetailsDialog>
   ) {
     this.weatherDetails = data.weather_details;
+
     this.dialogType = data.dialogType;
   }
 

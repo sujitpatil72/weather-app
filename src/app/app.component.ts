@@ -51,7 +51,7 @@ export class AppComponent {
       .getDeviceType()
       .subscribe((isHandset: boolean) => {
         this.isHandset = isHandset;
-        this.matDialogConfig.width = isHandset ? '90%' : '30%';
+        this.matDialogConfig.width = isHandset ? '90%' : '32%';
       });
   }
 

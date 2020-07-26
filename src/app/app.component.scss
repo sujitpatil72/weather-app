@@ -51,6 +51,7 @@
         height: 1em;
         position: relative;
         right: -0.8em;
+        cursor: pointer;
 
         @include desktop {
           right: -1.25em;

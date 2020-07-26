@@ -1,50 +1,91 @@
+@import "../../../../styles/variables";
+@import "../../../../styles/elements";
+@import "../../../../styles/queries";
+
 ::ng-deep .mat-dialog-container {
   padding: 0 !important;
 }
 
 .dialog {
-  padding: 24px;
+  padding: 50px 25px;
   &--close {
     height: 0.8em;
     position: relative;
-    left: 1px;
-    top: -5px;
+    top: -25px;
     float: right;
+    cursor: pointer;
   }
 
-  .title {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    &__temperature {
-      margin: 0;
+  .weather {
+    margin-bottom: 20px;
+    cursor: pointer;
+    @include desktop {
+      min-width: 350px;
+      margin-right: 30px;
     }
-  }
-
-  &__weather-type {
-    text-align: center;
-    font-weight: 300;
-  }
-
-  .content {
-    &__parameters {
-      list-style: none;
-      list-style-position: inside;
-      font-size: 1.25em;
-
-      li {
-        margin: 5px;
+    .weather__title {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .weather__location {
+        font-size: 26px;
+        margin: 20px 0;
       }
 
-      li::before {
-        content: "•";
-        font-size: 1.5em;
-        line-height: 0;
-        margin: 0 0.5rem 0 -0.25rem;
-        position: relative;
-        top: 0.3rem;
-        color: red;
+      .weather__temperature {
+        display: flex;
+        width: 175px;
+        font-size: 25px;
+
+        .weather__icon {
+          height: 2.5em;
+          margin-top: -15px;
+        }
+
+        .weather__unit-icon {
+          height: 1em;
+          margin-top: 2px;
+        }
+
+        h2 {
+          margin: 0 10px 0 5px;
+          font-size: 25px;
+        }
+      }
+    }
+
+    .weather__type {
+      text-align: center;
+      margin: 0;
+      font-size: 22px;
+      font-weight: 300;
+    }
+
+    .weather__date {
+      text-align: right;
+    }
+
+    .weather__content {
+      display: flex;
+      justify-content: center;
+      .weather__parameters {
+        list-style: none;
+        list-style-position: inside;
+        font-size: 1.25em;
+
+        li {
+          margin: 5px;
+        }
+
+        li::before {
+          content: "•";
+          font-size: 1.5em;
+          line-height: 0;
+          margin: 0 0.5rem 0 -0.25rem;
+          position: relative;
+          top: 0.3rem;
+          color: red;
+        }
       }
     }
   }

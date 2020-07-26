@@ -5,31 +5,74 @@
     src="./assets/images/close.png"
     alt="finger image"
   />
-  <div class="title dialog__title">
-    <h2 class="title__location" mat-dialog-title>
-      Weather in {{weatherDetails.name}}, {{weatherDetails.country}}
-    </h2>
-    <h2 class="title__temperature" mat-dialog-title>26.1</h2>
+
+  <div class="weather">
+    <div class="weather__title">
+      <h2 class="weather__location" mat-dialog-title>
+        Weather in {{weatherDetails.name}}, {{weatherDetails.country}}
+      </h2>
+      <div class="weather__temperature">
+        <img
+          class="weather__icon"
+          src="{{ weatherDetails.weather | weatherIconUrl }}"
+          alt="weather image"
+        />
+        <h2 mat-dialog-title>{{ weatherDetails.temp | temperature }}</h2>
+        <img
+          class="weather__unit-icon"
+          src="./assets/images/degree.png"
+          alt="unit image"
+        />
+      </div>
+    </div>
+
+    <ng-container *ngFor="let weather of weatherDetails.weather">
+      <h3 class="weather__type">
+        {{ weather.description }}
+      </h3>
+    </ng-container>
+
+    <div class="weather__content" mat-dialog-content>
+      <ul class="weather__parameters">
+        <li>
+          Wind
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          {{weatherDetails.wind.speed}}&nbsp;m/s,&nbsp;
+          {{weatherDetails.wind.deg}}
+        </li>
+        <li>
+          Humidity
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{weatherDetails.humidity}}&nbsp;%
+        </li>
+        <li>
+          Pressure
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{weatherDetails.pressure}}&nbsp;hpa
+        </li>
+        <li>
+          Sunrise
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{weatherDetails.sunrise
+          | date:'HH:mm'}}
+        </li>
+        <li>
+          Sunset
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{weatherDetails.sunset|
+          date:'HH:mm'}}
+        </li>
+      </ul>
+    </div>
   </div>
-  <h3 class="dialog__weather-type">Thunderstorm</h3>
-  <div class="content dialog__content" mat-dialog-content>
-    <ul class="content__parameters">
-      <li>wind 121212</li>
-      <li>wind 121212</li>
-      <li>wind 121212</li>
-      <li>wind 121212</li>
-    </ul>
-  </div>
+
   <div class="dialog__actions" mat-dialog-actions>
     <button
+      class="button-success"
       *ngIf="dialogType === 'add'"
       mat-flat-button
-      color="primary"
       (click)="closeDialog()"
     >
       Add
     </button>
     <button
+      class="button-danger"
       *ngIf="dialogType === 'remove'"
       mat-flat-button
       color="primary"
