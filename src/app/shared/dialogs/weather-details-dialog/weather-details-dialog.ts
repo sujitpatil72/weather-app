@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { IWeatherDetails } from '../../../core/weather.interface';
+import { IWeatherDetails, IDialog } from '../../../core/weather.interface';
 @Component({
   selector: 'weather-details-dialog',
   templateUrl: './weather-details-dialog.html',
@@ -8,15 +8,18 @@ import { IWeatherDetails } from '../../../core/weather.interface';
 })
 export class WeatherDetailsDialog {
   weatherDetails: IWeatherDetails;
+  dialogType: string = '';
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public weather_details: IWeatherDetails,
+    @Inject(MAT_DIALOG_DATA)
+    public data: { dialogType: string; weather_details: IWeatherDetails },
     public dialogRef: MatDialogRef<WeatherDetailsDialog>
   ) {
-    this.weatherDetails = weather_details;
+    this.weatherDetails = data.weather_details;
+    this.dialogType = data.dialogType;
   }
 
-  weatherActions(abcd) {
-    this.dialogRef.close(this.weatherDetails);
+  closeDialog() {
+    this.dialogRef.close(this.data);
   }
 }

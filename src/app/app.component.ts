@@ -3,7 +3,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { FormControl, Validators } from '@angular/forms';
 import { environment } from '../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { IWeather, IWeatherDetails } from './core/weather.interface';
+import { IWeather, IWeatherDetails, IDialog } from './core/weather.interface';
 import { WeatherDetailsDialog } from './shared/dialogs/weather-details-dialog/weather-details-dialog';
 import { DetectBreakpointsService } from './core/detect-breakpoints.service';
 
@@ -27,7 +27,9 @@ export class AppComponent {
   citiesWeatherAction = {
     add: (weather_details: IWeatherDetails) => {
       this.citiesWeather.set(weather_details.name, weather_details);
-      console.log('AppComponent -> this.weatherList', this.citiesWeather);
+    },
+    remove: (cityName: string) => {
+      this.citiesWeather.delete(cityName);
     },
   };
 
@@ -63,18 +65,21 @@ export class AppComponent {
           dt,
         } = weather_details;
 
-        this.openWeatherDetailsDialog({
-          name,
-          country,
-          sunrise,
-          sunset,
-          wind,
-          temp,
-          humidity,
-          pressure,
-          weather,
-          dt,
-        });
+        this.openWeatherDetailsDialog(
+          {
+            name,
+            country,
+            sunrise,
+            sunset,
+            wind,
+            temp,
+            humidity,
+            pressure,
+            weather,
+            dt,
+          },
+          'add'
+        );
       },
       (error) => {
         console.log(
@@ -85,18 +90,36 @@ export class AppComponent {
     );
   }
 
-  openWeatherDetailsDialog(weather_data: IWeatherDetails) {
-    this.matDialogConfig.data = weather_data;
+  cityWeatherDetails(weather_data: IWeatherDetails) {
+    this.openWeatherDetailsDialog(weather_data, 'remove');
+  }
+
+  openWeatherDetailsDialog(
+    weather_details: IWeatherDetails,
+    dialogType: IDialog
+  ) {
+    this.matDialogConfig.data = {
+      weather_details,
+      dialogType,
+    };
+
     const dialogRef = this.dialog.open(
       WeatherDetailsDialog,
       this.matDialogConfig
     );
 
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
-      if (!result) return;
+    dialogRef
+      .afterClosed()
+      .subscribe(
+        (result: { dialogType: string; weather_details: IWeatherDetails }) => {
+          console.log(`Dialog result: ${result}`);
+          if (!result) return;
 
-      this.citiesWeatherAction.add(result);
-    });
+          if (result.dialogType === 'add')
+            this.citiesWeatherAction.add(result.weather_details);
+          if (result.dialogType === 'remove')
+            this.citiesWeatherAction.remove(result.weather_details.name);
+        }
+      );
   }
 }

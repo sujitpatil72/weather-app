@@ -108,6 +108,7 @@
       }
       .weather {
         margin-bottom: 20px;
+        cursor: pointer;
         @include desktop {
           min-width: 350px;
           margin-right: 30px;

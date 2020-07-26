@@ -36,7 +36,7 @@
     </div>
     <div class="weather-section__list">
       <ng-container *ngFor="let city of citiesWeather | keyvalue">
-        <mat-card class="weather">
+        <mat-card class="weather" (click)="cityWeatherDetails(city.value)">
           <div class="weather__title">
             <h2 class="weather__location" mat-dialog-title>
               Weather in {{ city.value.name }}, {{ city.value.country }}

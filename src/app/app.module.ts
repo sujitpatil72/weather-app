@@ -18,7 +18,6 @@ import { DialogsModule } from './shared/dialogs/dialogs.module';
     HttpClientModule,
     MaterialModule,
     ReactiveFormsModule,
-    DialogsModule,
     PipesModule,
   ],
   providers: [],

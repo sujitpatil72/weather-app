@@ -37,3 +37,5 @@ export interface IWeatherDetails {
   };
   weather: [];
 }
+
+export type IDialog = 'add' | 'remove';

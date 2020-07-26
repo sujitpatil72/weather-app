@@ -21,11 +21,21 @@
     </ul>
   </div>
   <div class="dialog__actions" mat-dialog-actions>
-    <button mat-flat-button color="primary" (click)="weatherActions('add')">
+    <button
+      *ngIf="dialogType === 'add'"
+      mat-flat-button
+      color="primary"
+      (click)="closeDialog()"
+    >
       Add
     </button>
-    <button mat-flat-button color="primary" (click)="weatherActions('delete')">
-      delete
+    <button
+      *ngIf="dialogType === 'remove'"
+      mat-flat-button
+      color="primary"
+      (click)="closeDialog()"
+    >
+      Remove
     </button>
   </div>
 </div>
