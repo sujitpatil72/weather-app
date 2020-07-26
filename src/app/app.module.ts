@@ -6,11 +6,11 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from './shared/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
-import { WeatherDetailsDialog } from './shared/dialogs/weather-details-dialog/weather-details-dialog';
 import { PipesModule } from './shared/pipes/pipes.module';
+import { DialogsModule } from './shared/dialogs/dialogs.module';
 
 @NgModule({
-  declarations: [AppComponent, WeatherDetailsDialog],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -18,6 +18,7 @@ import { PipesModule } from './shared/pipes/pipes.module';
     HttpClientModule,
     MaterialModule,
     ReactiveFormsModule,
+    DialogsModule,
     PipesModule,
   ],
   providers: [],
