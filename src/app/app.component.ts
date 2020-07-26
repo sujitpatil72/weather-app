@@ -126,6 +126,7 @@ export class AppComponent {
             this.citiesWeatherAction.add(result.weather_details);
           if (result.dialogType === 'remove')
             this.citiesWeatherAction.remove(result.weather_details.name);
+          this.searchInput.setValue('');
           this.ref.detectChanges();
         }
       );
