@@ -1,6 +1,25 @@
+@import "./variables";
+
 // added custom shadow to mat-card
 mat-card {
   -webkit-box-shadow: 0px 0px 11px 2px rgba(0, 0, 0, 0.15) !important;
   -moz-box-shadow: 0px 0px 11px 2px rgba(0, 0, 0, 0.15) !important;
   box-shadow: 0px 0px 11px 2px rgba(0, 0, 0, 0.15) !important;
+}
+
+%button {
+  height: 50px;
+  width: 100px;
+  color: $color-white-smoke;
+  font-weight: 400;
+}
+
+.button-success {
+  @extend %button;
+  background: $color-byzantine-night-blue;
+}
+
+.button-danger {
+  @extend %button;
+  background: $color-chi-gong;
 }

@@ -1,0 +1,29 @@
+@import "../../../../styles/variables";
+@import "../../../../styles/elements";
+@import "../../../../styles/queries";
+
+.dialog {
+  text-align: center;
+  padding: 50px 0;
+
+  @include desktop {
+    padding: 50px;
+  }
+  &__alert {
+    height: 1.7em;
+  }
+
+  &__content {
+    margin: 26px 0;
+    font-size: 1.3em;
+    color: gray;
+    padding: 0;
+    p {
+      margin: 0;
+    }
+
+    .dialog__warning-text {
+      margin-bottom: 5px;
+    }
+  }
+}

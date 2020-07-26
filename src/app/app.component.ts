@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { IWeather, IWeatherDetails, IDialog } from './core/weather.interface';
 import { WeatherDetailsDialog } from './shared/dialogs/weather-details-dialog/weather-details-dialog';
 import { DetectBreakpointsService } from './core/detect-breakpoints.service';
+import { WeatherErrorDialog } from './shared/dialogs/weather-error-dialog/weather-error-dialog';
 
 const API_URL = 'https://api.openweathermap.org/data/2.5/weather';
 @Component({
@@ -82,10 +83,8 @@ export class AppComponent {
         );
       },
       (error) => {
-        console.log(
-          'AppComponent -> fetchWeatherDetailsByCity -> error',
-          error.status
-        );
+        if (error.status === 404)
+          this.openWeatherErrorDialog(this.searchInput.value);
       }
     );
   }
@@ -112,7 +111,6 @@ export class AppComponent {
       .afterClosed()
       .subscribe(
         (result: { dialogType: string; weather_details: IWeatherDetails }) => {
-          console.log(`Dialog result: ${result}`);
           if (!result) return;
 
           if (result.dialogType === 'add')
@@ -121,5 +119,13 @@ export class AppComponent {
             this.citiesWeatherAction.remove(result.weather_details.name);
         }
       );
+  }
+
+  openWeatherErrorDialog(cityName: string) {
+    this.matDialogConfig.data = { cityName };
+    const dialogRef = this.dialog.open(
+      WeatherErrorDialog,
+      this.matDialogConfig
+    );
   }
 }
