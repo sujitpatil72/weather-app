@@ -98,8 +98,20 @@
     }
 
     &__list {
+      display: flex;
+      flex-direction: column;
+
+      @include desktop {
+        padding: 60px;
+        flex-wrap: wrap;
+        flex-direction: row;
+      }
       .list-card {
         margin-bottom: 20px;
+        @include desktop {
+          min-width: 350px;
+          margin-right: 30px;
+        }
         .title {
           display: flex;
           flex-direction: column;
