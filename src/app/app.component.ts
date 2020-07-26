@@ -5,7 +5,7 @@ import { DetectBreakpointsService } from './detect-breakpoints.service';
 import { FormControl, Validators } from '@angular/forms';
 import { environment } from '../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { IWeather } from './weather.interface';
+import { IWeather, IWeatherDetails } from './weather.interface';
 
 const API_URL = 'https://api.openweathermap.org/data/2.5/weather';
 @Component({
@@ -20,6 +20,14 @@ export class AppComponent {
     width: '90%',
     maxWidth: '100vw',
     minWidth: 350,
+  };
+
+  weatherList = new Map<string, IWeatherDetails>();
+
+  weatherListAction = {
+    add: (weather_details: IWeatherDetails) => {
+      this.weatherList.set(weather_details.name, weather_details);
+    },
   };
 
   constructor(
@@ -51,6 +59,7 @@ export class AppComponent {
           wind,
           name,
           weather,
+          dt,
         } = weather_details;
 
         this.openWeatherDetailsDialog({
@@ -63,6 +72,7 @@ export class AppComponent {
           humidity,
           pressure,
           weather,
+          dt,
         });
       },
       (error) => {
@@ -74,7 +84,7 @@ export class AppComponent {
     );
   }
 
-  openWeatherDetailsDialog(weather_data) {
+  openWeatherDetailsDialog(weather_data: IWeatherDetails) {
     this.matDialogConfig.data = weather_data;
     const dialogRef = this.dialog.open(
       WeatherDetailsDialog,
@@ -83,6 +93,9 @@ export class AppComponent {
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
+      if (!result) return;
+
+      this.weatherListAction.add(result);
     });
   }
 }

@@ -15,6 +15,7 @@ export interface IWeather {
     temp_max: number;
     temp_min: number;
   };
+  dt: number;
   wind: {
     deg: number;
     speed: number;
@@ -29,7 +30,7 @@ export interface IWeatherDetails {
   humidity: number;
   pressure: number;
   temp: number;
-
+  dt: number;
   wind: {
     deg: number;
     speed: number;
