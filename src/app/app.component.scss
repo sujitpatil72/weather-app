@@ -106,47 +106,52 @@
         flex-wrap: wrap;
         flex-direction: row;
       }
-      .list-card {
+      .weather {
         margin-bottom: 20px;
         @include desktop {
           min-width: 350px;
           margin-right: 30px;
         }
-        .title {
+        .weather__title {
           display: flex;
           flex-direction: column;
           align-items: center;
-          &__location {
+          .weather__location {
             font-size: 26px;
             margin: 20px 0;
           }
 
-          &__temperature {
+          .weather__temperature {
             display: flex;
             width: 35%;
             justify-content: space-evenly;
             font-size: 25px;
 
-            img {
+            .weather__icon {
               height: 2.5em;
               margin-top: -15px;
             }
 
+            .weather__unit-icon {
+              height: 1em;
+              margin-top: 2px;
+            }
+
             h2 {
-              margin: 0 0 20px;
+              margin: 0 10px 0 5px;
               font-size: 25px;
             }
           }
         }
 
-        &__weather-type {
+        .weather__type {
           text-align: center;
           margin: 0;
+          font-size: 22px;
           font-weight: 300;
-          font-size: 1.4em;
         }
 
-        &__date {
+        .weather__date {
           text-align: right;
         }
       }

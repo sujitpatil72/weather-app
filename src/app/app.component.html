@@ -36,25 +36,29 @@
     </div>
     <div class="weather-section__list">
       <ng-container *ngFor="let city of citiesWeather | keyvalue">
-        <mat-card class="list-card weather-section__list-card">
-          <div class="title list-card__title">
-            <h2 class="title__location" mat-dialog-title>
+        <mat-card class="weather">
+          <div class="weather__title">
+            <h2 class="weather__location" mat-dialog-title>
               Weather in {{ city.value.name }}, {{ city.value.country }}
             </h2>
-            <div class="title__temperature">
+            <div class="weather__temperature">
               <img
-                class="info__logo"
+                class="weather__icon"
                 src="{{ city.value.weather[0] | weatherIconUrl }}"
                 alt="finger image"
               />
               <h2 mat-dialog-title>{{ city.value.temp | temperature }}</h2>
-              <span>C</span>
+              <img
+                class="weather__unit-icon"
+                src="./assets/images/degree.png"
+                alt="finger image"
+              />
             </div>
           </div>
-          <h3 class="list-card__weather-type">
+          <h3 class="weather__type">
             {{ city.value.weather[0].description }}
           </h3>
-          <p class="list-card__date">{{ city.value.dt | date }}</p>
+          <p class="weather__date">{{ city.value.dt | date }}</p>
         </mat-card>
       </ng-container>
     </div>
