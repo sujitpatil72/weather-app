@@ -28,14 +28,14 @@
       flex-direction: column;
       align-items: center;
       .weather__location {
-        font-size: 26px;
+        font-size: $title;
         margin: 20px 0;
       }
 
       .weather__temperature {
         display: flex;
         width: 175px;
-        font-size: 25px;
+        font-size: $title;
 
         .weather__icon {
           height: 2.5em;
@@ -49,7 +49,7 @@
 
         h2 {
           margin: 0 10px 0 5px;
-          font-size: 25px;
+          font-size: $title;
         }
       }
     }
@@ -57,7 +57,7 @@
     .weather__type {
       text-align: center;
       margin: 0;
-      font-size: 22px;
+      font-size: $sub-title;
       font-weight: 300;
     }
 
@@ -71,7 +71,7 @@
       .weather__parameters {
         list-style: none;
         list-style-position: inside;
-        font-size: 1.25em;
+        font-size: $sub-title;
 
         li {
           margin: 5px;
@@ -79,12 +79,12 @@
 
         li::before {
           content: "•";
-          font-size: 1.5em;
+          font-size: $title;
           line-height: 0;
           margin: 0 0.5rem 0 -0.25rem;
           position: relative;
           top: 0.3rem;
-          color: red;
+          color: $color-byzantine-night-blue;
         }
       }
     }
