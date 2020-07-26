@@ -20,7 +20,7 @@ const API_URL = 'https://api.openweathermap.org/data/2.5/weather';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  searchInput: FormControl = new FormControl('bengaluru', Validators.required);
+  searchInput: FormControl = new FormControl('', Validators.required);
 
   matDialogConfig: MatDialogConfig = {
     width: '90%',
