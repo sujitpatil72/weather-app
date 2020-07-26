@@ -7,6 +7,7 @@ import { MaterialModule } from './shared/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { WeatherDetailsDialog } from './shared/dialogs/weather-details-dialog/weather-details-dialog';
+import { PipesModule } from './shared/pipes/pipes.module';
 
 @NgModule({
   declarations: [AppComponent, WeatherDetailsDialog],
@@ -17,6 +18,7 @@ import { WeatherDetailsDialog } from './shared/dialogs/weather-details-dialog/we
     HttpClientModule,
     MaterialModule,
     ReactiveFormsModule,
+    PipesModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
