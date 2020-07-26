@@ -47,7 +47,7 @@
                 src="{{ city.value.weather[0] | weatherIconUrl }}"
                 alt="finger image"
               />
-              <h2 mat-dialog-title>{{ city.value.temp }}</h2>
+              <h2 mat-dialog-title>{{ city.value.temp | temperature }}</h2>
               <span>C</span>
             </div>
           </div>
